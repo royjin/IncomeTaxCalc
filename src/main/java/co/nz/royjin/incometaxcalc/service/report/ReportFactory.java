@@ -26,9 +26,9 @@ public class ReportFactory {
 	
 	@Inject
 	public ReportFactory(IncomeTaxCalculationService incomeTaxCalculationService,
-			AppConfigService appConigService, MonthRangeService monthRangeService) {
+			AppConfigService appConfigService, MonthRangeService monthRangeService) {
 		this.incomeTaxCalculationService = incomeTaxCalculationService;
-		this.appConfigService = appConigService;
+		this.appConfigService = appConfigService;
 		this.monthRangeService = monthRangeService;
 	}
 	

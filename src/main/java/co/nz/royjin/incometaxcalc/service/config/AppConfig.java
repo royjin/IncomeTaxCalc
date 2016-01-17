@@ -6,13 +6,16 @@ import java.util.List;
 import org.apache.commons.configuration.Configuration;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.PropertiesConfiguration;
-
+import org.joda.time.LocalDateTime;
+import org.joda.time.format.DateTimeFormat;
 
 import co.nz.royjin.incometaxcalc.model.money.Currency;
 
 class AppConfig {
 	
 	private static final String APP_CONFIG_FILE = "incometaxconfig.properties";
+	
+	private static final String TAX_YEAR_START_DATE_FORMAT = "dd MMMM YYYY";
 	
 	private static Configuration propertiesConfig;
 	
@@ -32,7 +35,8 @@ class AppConfig {
 	
 	List<String> getTaxLevels() {
 		List<String> levels = new ArrayList<String>();
-		Iterator<String> subKeyItr = propertiesConfig.getKeys("taxtable.level");
+		LocalDateTime taxYear = LocalDateTime.parse(getTaxYear(), DateTimeFormat.forPattern(TAX_YEAR_START_DATE_FORMAT));
+		Iterator<String> subKeyItr = propertiesConfig.getKeys("taxtable.level." + taxYear.getYear());
 		while (subKeyItr.hasNext()) {
 			String subKey = subKeyItr.next();
 			levels.add(propertiesConfig.getString(subKey));
@@ -46,6 +50,6 @@ class AppConfig {
 	}
 	
 	String getTaxYear() {
-		return propertiesConfig.getString("tax.year");
+		return propertiesConfig.getString("tax.year").trim();
 	}
 }

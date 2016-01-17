@@ -38,7 +38,7 @@ public class MonthRangeServiceImpl implements MonthRangeService {
 	}
 	
 	private MonthRange getTaxYear() {
-		LocalDateTime start = LocalDateTime.parse(appConfigService.getTaxStartYear().trim(), DateTimeFormat.forPattern(TAX_YEAR_START_DATE_FORMAT));
+		LocalDateTime start = LocalDateTime.parse(appConfigService.getTaxStartYear(), DateTimeFormat.forPattern(TAX_YEAR_START_DATE_FORMAT));
 		LocalDateTime end = start.plusYears(1);
 		return new MonthRange(start, end);
 	}

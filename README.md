@@ -16,11 +16,11 @@
 * Tax rule is configurable in the system properties file with following format. The configuration design is for maintaining and reuseing purpose.  
 ```
 tax.year=01 July 2012  
-taxtable.level.1=1|0|18200||  
-taxtable.level.2=2|18201|37000|0.19|  
-taxtable.level.3=3|37001|80000|0.325|3572  
-taxtable.level.4=4|80001|180000|0.37|17547  
-taxtable.level.5=5|180001||0.45|54457s  
+taxtable.level.2012.1=1|0|18200||
+taxtable.level.2012.2=2|18201|37000|0.19|
+taxtable.level.2012.3=3|37001|80000|0.325|3572
+taxtable.level.2012.4=4|80001|180000|0.37|17547
+taxtable.level.2012.5=5|180001||0.45|54457 
 ```
 * TDD and BDD development driven: mock the service avoid integration testing and make sure testing as first approach to validate the object oriented design. The unit test was developed upon the Mockito mock test framework and use BDD approach to describe the test cases.  
 ```
@@ -53,7 +53,7 @@ assertEquals(new Money(currency), incomeTax);
 
 ## Generate runnable jar file
 * Open the command console, under the IncomeTaxCalc (pom.xml exits), type: mvn install
-* Go to the target directly under the IncomeTaxCalc, you should see the generated jar file called: incometaxcalc-prod-jar-with-dependencies.jar   
+* Go to the target directory under the IncomeTaxCalc, you should see the generated jar file called: incometaxcalc-prod-jar-with-dependencies.jar  
 
 
 # Run

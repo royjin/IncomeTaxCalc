@@ -1,4 +1,4 @@
-package co.nz.royjin.incometaxcalc.service.model;
+package co.nz.royjin.incometaxcalc.model;
 
 import static org.junit.Assert.*;
 

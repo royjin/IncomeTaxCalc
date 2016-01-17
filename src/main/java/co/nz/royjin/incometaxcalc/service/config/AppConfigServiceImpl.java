@@ -22,6 +22,4 @@ public class AppConfigServiceImpl implements AppConfigService {
 	public String getTaxStartYear() {
 		return config.getTaxYear();
 	}
-	
-	
 }
