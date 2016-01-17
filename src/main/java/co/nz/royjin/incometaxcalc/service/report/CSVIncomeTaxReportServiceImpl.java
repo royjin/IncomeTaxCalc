@@ -57,7 +57,6 @@ public class CSVIncomeTaxReportServiceImpl implements IncomeTaxReportService {
 			try {
 				in.close();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -83,7 +82,6 @@ public class CSVIncomeTaxReportServiceImpl implements IncomeTaxReportService {
 						reportList.getIncomeTax(), reportList.getNetIncome(), reportList.getSuperannuation());
 			}
 		} catch (Exception e) {
-			System.out.println("Error in CsvFileWriter !!!");
 			e.printStackTrace();
 		} finally {
 			try {
@@ -91,7 +89,6 @@ public class CSVIncomeTaxReportServiceImpl implements IncomeTaxReportService {
 				fileWriter.close();
 				csvFilePrinter.close();
 			} catch (IOException e) {
-				System.out.println("Error while flushing/closing fileWriter/csvPrinter !!!");
                 e.printStackTrace();
 			}
 		}
