@@ -73,9 +73,9 @@ Michael,Smith,1500,10%,01 February - 28 February
 
 
 * Run from generation jar based on above steps
-* Or simply use the existing jar file under the dist folder. Exiting runnable jar file called: incometaxcalc-prod.jar and run the following command line:  
+* Or simply use the existing jar file under the dist folder. Exiting runnable jar file called: incometaxcalc-prod-jar-with-dependencies.jar and run the following command line:  
 ```
-java -jar incometaxcalc-prod.jar <input file name.csv>
+java -jar incometaxcalc-prod-jar-with-dependencies.jar <input file name.csv>
 ```
 
 ## CSV file ouput
