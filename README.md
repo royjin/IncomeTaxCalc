@@ -5,7 +5,12 @@
 @Then users' monthly tax report was generated  
 
 # Requirements and Assumption
-
+* The IncomeTaxCalc app will validate the payment periods in the input CSV file and output the specific year appended with payment periods.
+e.g. 
+1. If the tax year is 01 July 2012, the payment periods in the CSV input file is 01 March - 31 March, the output will be 01 March 2013 - 31 March 2013.
+2. If the tax year is 01 July 2012, the payment periods in the CSV input file is 01 August - 31 August, the output will be 01 August 2012 - 31 August 2012.   
+3. If the input payment periods is: 01 December - 28 December, it is invalid payment period it must be per calendar month.
+ 
 
 
 # Design
