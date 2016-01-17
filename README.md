@@ -2,23 +2,23 @@
 
 @Given user provides the monthly annual income list file  
 @When IncomeTaxCalc app runs  
-@Then users' monthly tax report was generated  
+@Then users' monthly tax report will be generated  
 
 # Requirements and Assumption
 * The IncomeTaxCalc app will validate the payment periods in the input CSV file and output the specific year appended with payment periods.
 e.g. 
 1. If the tax year is 01 July 2012, the payment periods in the CSV input file is 01 March - 31 March, the output will be 01 March 2013 - 31 March 2013.
 2. If the tax year is 01 July 2012, the payment periods in the CSV input file is 01 August - 31 August, the output will be 01 August 2012 - 31 August 2012.   
-3. If the input payment periods is: 01 December - 28 December, it is invalid payment period it must be per calendar month.
+3. If the input payment periods is: 01 December - 28 December, it is invalid payment period and it must be per calendar month.
  
 
 
 # Design
 ## High level
 * This is a command-line app developed by JAVA
-* Dependency injection design pattern is the foundation of this app to make sure the requirement can be flexible change with implementation switch, code testable and maintainable  
+* Dependency injection design pattern is the foundation of this app to make sure the requirement can be flexible change with implementation switch, code testable and maintainable. For example, IncomeTaxRuleStrategy is binding with AustraliaIncomeTaxRuleStrategyImpl, which can be switch to NZIncomeTaxRuleStrategyImpl in the future if the requirement was extended.  
 * Layer design: service, model and client can be easily to migrate to different system, e.g. command-line app to web app.
-* Tax rule is configurable in the system properties file with following format. The configuration design is for maintaining and reuseing purpose.  
+* Tax rule is configurable in the system properties file with following format. The configuration design is for maintaining and reusing purpose.  
 ```
 tax.year=01 July 2012  
 taxtable.level.2012.1=1|0|18200||
@@ -47,10 +47,12 @@ assertEquals(new Money(currency), incomeTax);
 
 
 # Build
+## Environment
 * Download and install JDK1.8 latest version https://docs.oracle.com/javase/8/docs/technotes/guides/install/install_overview.html  
 * Download and install Maven https://maven.apache.org/install.html  
 * Download and install Eclipse http://www.eclipse.org/downloads/packages/eclipse-ide-java-developers/mars1
 * Download the source code https://github.com/royjin/IncomeTaxCalc/tree/master  
+
 ## Build eclipse project
 * Create folder called IncomeTaxCalc and git clone source code to this folder
 * Open the command console, change directory to IncomeTaxCalc directory (pom.xml exits), type: mvn eclipse:eclipse  
@@ -84,4 +86,4 @@ java -jar incometaxcalc-prod-jar-with-dependencies.jar <input file name.csv>
 ```
 
 ## CSV file ouput
-After successfully run the above command, the output file will be generated: incometax_output_<datetime>.csv. Please see the sample output csv file in your project directory called: incometax_output_171216231250.csv  
+After successfully run the above command, the output file will be generated: incometax_output_datetime.csv. Please see the sample output CSV file in your project directory called: incometax_output_171216231250.csv  
