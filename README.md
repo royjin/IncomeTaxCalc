@@ -16,7 +16,7 @@ e.g.
 # Design
 ## High level
 * This is a command-line app developed by JAVA
-* Dependency injection design pattern is the foundation of this app to make sure the requirement can be flexible change with implementation switch, code testable and maintainable. For example, IncomeTaxRuleStrategy is binding with AustraliaIncomeTaxRuleStrategyImpl, which can be switch to NZIncomeTaxRuleStrategyImpl in the future if the requirement was extended.  
+* Dependency injection design pattern is the foundation of this app to make sure the requirement can be flexible change with implementation switch, code testable and maintainable. For example, IncomeTaxRuleStrategy is binding with AustraliaIncomeTaxRuleStrategyImpl, which can be switched to NZIncomeTaxRuleStrategyImpl in the future if the requirement was extended.  
 * Layer design: service, model and client can be easily to migrate to different system, e.g. command-line app to web app.
 * Tax rule is configurable in the system properties file with following format. The configuration design is for maintaining and reusing purpose.  
 ```
