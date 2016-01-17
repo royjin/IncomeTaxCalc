@@ -77,3 +77,6 @@ Michael,Smith,1500,10%,01 February - 28 February
 ```
 java -jar incometaxcalc-prod.jar <input file name.csv>
 ```
+
+## CSV file ouput
+After successfully run the above command, the output file will be generated: incometax_output_<datetime>.csv. Please see the sample output csv file in your project directory called: incometax_output_171216231250.csv  
