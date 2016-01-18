@@ -1,6 +1,7 @@
 package co.nz.royjin.incometaxcalc.service.report;
 
-public class InputRawData {
+class InputRawData {
+	
 	private String firstName;
 
 	private String lastName;
@@ -12,7 +13,6 @@ public class InputRawData {
 	private String month;
 
 	public InputRawData(String firstName, String lastName, String annualIncome, String superRate, String month) {
-		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.annualIncome = annualIncome;

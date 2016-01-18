@@ -23,8 +23,10 @@ public class Run {
         }
         
 		try {
+			System.out.println("Start generating the report with input file: " + fileName);
 			Report report = app.getReportService().generateReport(fileName);
-			app.getReportService().outputReportResult(report);
+			String outputFileName = app.getReportService().outputReportResult(report);
+			System.out.println("Report was generated successfully and please check all the details in the " + outputFileName);
 		} catch (CalculateIncomeTaxException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

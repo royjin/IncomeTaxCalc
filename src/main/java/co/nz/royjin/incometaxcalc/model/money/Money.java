@@ -50,21 +50,21 @@ public class Money implements Serializable {
 	}
 	
 	public Money add(Money money) {
-		vlidateMoney(money);
+		validateMoney(money);
 		
 		BigDecimal result = this.value.add(money.getValue());
 		return new Money(result, this.currency);
 	}
 	
 	public Money subtract(Money money) {
-		vlidateMoney(money);
+		validateMoney(money);
 		
 		BigDecimal result = this.value.subtract(money.getValue());
 		return new Money(result, this.currency);
 	}
 	
 	public Money multiply(Money money) {
-		vlidateMoney(money);
+		validateMoney(money);
 		
 		BigDecimal result = this.value.multiply(money.getValue());
 		return new Money(result, this.currency);
@@ -102,27 +102,27 @@ public class Money implements Serializable {
 	}
 	
 	public boolean isGreaterThan(Money money) {
-		vlidateMoney(money);
+		validateMoney(money);
 		return this.value.compareTo(money.getValue()) > 0;
 	}
 	
 	public boolean isLessThan(Money money) {
-		vlidateMoney(money);
+		validateMoney(money);
 		return this.value.compareTo(money.getValue()) < 0;
 	}
 	
 	public boolean isEqualTo(Money money) {
-		vlidateMoney(money);
+		validateMoney(money);
 		return this.value.compareTo(money.getValue()) == 0;
 	}
 	
 	public boolean isGreaterThanOrEqual(Money money) {
-		vlidateMoney(money);
+		validateMoney(money);
 		return !this.isLessThan(money);
 	}
 	
 	public boolean isLessThanOrEqual(Money money) {
-		vlidateMoney(money);
+		validateMoney(money);
 		return !this.isGreaterThan(money);
 	}
 	
@@ -130,7 +130,7 @@ public class Money implements Serializable {
 		return this.getValue().compareTo(BigDecimal.ZERO) < 0;
 	}
 	
-	private void vlidateMoney(Money money) {
+	private void validateMoney(Money money) {
 		if (money == null || !this.currency.equals(money.getCurrency())) {
 			throw new IllegalArgumentException("Money with different currency: " + money.getCurrency());
 		}

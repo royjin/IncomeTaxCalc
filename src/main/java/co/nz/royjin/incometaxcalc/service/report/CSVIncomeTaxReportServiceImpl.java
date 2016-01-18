@@ -64,7 +64,7 @@ public class CSVIncomeTaxReportServiceImpl implements IncomeTaxReportService {
 	}
 	
 	@Override
-	public void outputReportResult(Report report) {
+	public String outputReportResult(Report report) {
 		
 		FileWriter fileWriter = null;
 		CSVPrinter csvFilePrinter = null;
@@ -81,8 +81,12 @@ public class CSVIncomeTaxReportServiceImpl implements IncomeTaxReportService {
 				csvFilePrinter.printRecord(reportList.getPerson(),  reportList.getPaymentMonth(), reportList.getGrossIncome(),
 						reportList.getIncomeTax(), reportList.getNetIncome(), reportList.getSuperannuation());
 			}
+			
+			return outputFileName;
+			
 		} catch (Exception e) {
 			e.printStackTrace();
+			return null;
 		} finally {
 			try {
 				fileWriter.flush();

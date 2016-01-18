@@ -24,6 +24,9 @@ public class AustraliaIncomeTaxRuleStrategyImpl implements IncomeTaxRuleStrategy
 	}
 
 	@Override
+	/**
+	 * Generate full income tax table with lists of income tax level.
+	 */
 	public IncomeTaxTable generateIncomeTaxTable() {
 		IncomeTaxTable incomeTaxTable = new IncomeTaxTable();
 		for (String level : appConfigService.getTaxLevels()) {
@@ -34,6 +37,11 @@ public class AustraliaIncomeTaxRuleStrategyImpl implements IncomeTaxRuleStrategy
 		return incomeTaxTable;
 	}
 	
+	/**
+	 * Generate the each income tax level.
+	 * @param level tax level.
+	 * @return IncomeTaxLevel.
+	 */
 	private IncomeTaxLevel parseIncomeTaxLevel(String level) {
 		if (isValidLevel(level)) {
 			String[] attrs = level.trim().split(TAX_LEVEL_DELIMITER, -1);

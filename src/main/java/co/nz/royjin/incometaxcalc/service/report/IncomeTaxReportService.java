@@ -5,7 +5,18 @@ import co.nz.royjin.incometaxcalc.service.tax.exception.CalculateIncomeTaxExcept
 
 public interface IncomeTaxReportService {
 
+	/**
+	 * Generate Report.
+	 * @param fileInput file.
+	 * @return Report model.
+	 * @throws CalculateIncomeTaxException
+	 */
 	Report generateReport(String fileInput) throws CalculateIncomeTaxException;
 	
-	void outputReportResult(Report report);
+	/**
+	 * Output Report.
+	 * @param report Report.
+	 * @return String the output file name.
+	 */
+	String outputReportResult(Report report);
 }

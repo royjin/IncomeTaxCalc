@@ -18,6 +18,7 @@ public class ServiceModule extends AbstractModule {
 
 	@Override
 	protected void configure() {
+		
 		bind(ReportFactory.class);
 		
 		bind(AppConfigService.class).to(AppConfigServiceImpl.class);
