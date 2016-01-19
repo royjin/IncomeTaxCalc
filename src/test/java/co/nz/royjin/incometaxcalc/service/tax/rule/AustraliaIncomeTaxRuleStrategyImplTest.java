@@ -53,7 +53,7 @@ public class AustraliaIncomeTaxRuleStrategyImplTest {
 		// Then
 		assertEquals(new Money(Currency.find("en_AU")), level1.getBeginRange());
 		assertEquals(new Money(18200.00, Currency.find("en_AU")), level1.getEndRange());
-		assertNull(level1.getTaxBase());
+		assertNull(level1.getLump());
 		assertNull(level1.getTaxPercentage());
 		assertNull(level1.getPreviousLevelOrder());
 		assertFalse(level1.isRuleSet());
@@ -71,7 +71,7 @@ public class AustraliaIncomeTaxRuleStrategyImplTest {
 		assertEquals(new Money(18201.00, Currency.find("en_AU")), level2.getBeginRange());
 		assertEquals(new Money(37000.00, Currency.find("en_AU")), level2.getEndRange());
 		assertEquals(new Double(0.19), level2.getTaxPercentage());
-		assertNull(level2.getTaxBase());
+		assertNull(level2.getLump());
 		assertEquals(new Integer(1), level2.getPreviousLevelOrder());
 		assertTrue(level2.isRuleSet());
 		assertFalse(level2.isMaxRange());
@@ -88,7 +88,7 @@ public class AustraliaIncomeTaxRuleStrategyImplTest {
 		assertEquals(new Money(37001.00, Currency.find("en_AU")), level3.getBeginRange());
 		assertEquals(new Money(80000.00, Currency.find("en_AU")), level3.getEndRange());
 		assertEquals(new Double(0.325), level3.getTaxPercentage());
-		assertEquals(new Money(3572.00, Currency.find("en_AU")), level3.getTaxBase());
+		assertEquals(new Money(3572.00, Currency.find("en_AU")), level3.getLump());
 		assertEquals(new Integer(2), level3.getPreviousLevelOrder());
 		assertTrue(level3.isRuleSet());
 		assertFalse(level3.isMaxRange());
@@ -105,7 +105,7 @@ public class AustraliaIncomeTaxRuleStrategyImplTest {
 		assertEquals(new Money(80001.00, Currency.find("en_AU")), level4.getBeginRange());
 		assertEquals(new Money(180000.00, Currency.find("en_AU")), level4.getEndRange());
 		assertEquals(new Double(0.37), level4.getTaxPercentage());
-		assertEquals(new Money(17547.00, Currency.find("en_AU")), level4.getTaxBase());
+		assertEquals(new Money(17547.00, Currency.find("en_AU")), level4.getLump());
 		assertEquals(new Integer(3), level4.getPreviousLevelOrder());
 		assertTrue(level4.isRuleSet());
 		assertFalse(level4.isMaxRange());
@@ -122,7 +122,7 @@ public class AustraliaIncomeTaxRuleStrategyImplTest {
 		assertEquals(new Money(180001.00, Currency.find("en_AU")), level5.getBeginRange());
 		assertNull(level5.getEndRange());
 		assertEquals(new Double(0.45), level5.getTaxPercentage());
-		assertEquals(new Money(54457.00, Currency.find("en_AU")), level5.getTaxBase());
+		assertEquals(new Money(54457.00, Currency.find("en_AU")), level5.getLump());
 		assertEquals(new Integer(4), level5.getPreviousLevelOrder());
 		assertTrue(level5.isRuleSet());
 		assertTrue(level5.isMaxRange());

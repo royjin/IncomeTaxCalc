@@ -41,8 +41,8 @@ public class IncomeTaxCalculationServiceImpl implements IncomeTaxCalculationServ
 			if (currentLevel.isWithinRange(annualIncome)){ 
 				if (currentLevel.isRuleSet() && currentLevel.hasPreviousLevel()) {
 					Money result = annualIncome.subtract(previousLevel.getEndRange()).multiply(currentLevel.getTaxPercentage());
-					if (currentLevel.getTaxBase() != null) {
-						result = result.add(currentLevel.getTaxBase());
+					if (currentLevel.getLump() != null) {
+						result = result.add(currentLevel.getLump());
 					}
 					return result.divide(NUMBER_OF_MONTHS, 6, RoundingMode.HALF_UP).roundUp();
 				}

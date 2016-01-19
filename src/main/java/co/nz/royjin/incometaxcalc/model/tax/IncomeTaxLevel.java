@@ -12,14 +12,14 @@ public class IncomeTaxLevel {
 	
 	private Double taxPercentage;
 	
-	private Money taxBase;
+	private Money lump;
 
-	public IncomeTaxLevel(Integer order, Money beginRange, Money endRange, Double taxPercentage, Money taxBase) {
+	public IncomeTaxLevel(Integer order, Money beginRange, Money endRange, Double taxPercentage, Money lump) {
 		this.order = order;
 		this.beginRange = beginRange;
 		this.endRange = endRange;
 		this.taxPercentage = taxPercentage;
-		this.taxBase = taxBase;
+		this.lump = lump;
 	}
 
 	public Integer getOrder() {
@@ -38,8 +38,8 @@ public class IncomeTaxLevel {
 		return taxPercentage;
 	}
 
-	public Money getTaxBase() {
-		return taxBase;
+	public Money getLump() {
+		return lump;
 	}
 	
 	public boolean isRuleSet() {
