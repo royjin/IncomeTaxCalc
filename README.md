@@ -7,17 +7,24 @@
 # Requirements and Assumption
 * The IncomeTaxCalc app will validate the payment periods in the input CSV file and output the specific year appended with payment periods.
 e.g. 
-1. If the tax year is 01 July 2012, the payment periods in the CSV input file is 01 March - 31 March, the output will be 01 March 2013 - 31 March 2013.
-2. If the tax year is 01 July 2012, the payment periods in the CSV input file is 01 August - 31 August, the output will be 01 August 2012 - 31 August 2012.   
-3. If the input payment periods is: 01 December - 28 December, it is invalid payment period and it must be per calendar month.
- 
+@Given the tax year is 01 July 2012  
+@When the report monthly tax period is 01 March - 31 March  
+@Then the output monthly tax period is 01 March 2013 - 31 March 2013  
+
+@Given the tax year is 01 July 2012  
+@When the report monthly tax period is 01 August - 31 August  
+@Then the output monthly tax period is 01 March 2013 - 31 March 2013  
+
+@Given the tax year is 01 July 2012  
+@When the report monthly tax period is 01 December - 28 December    
+@Then the output is failed due to not valid calendar month period  
 
 
 # Design
 ## High level
 * This is a command-line app developed by JAVA
 * Dependency injection design pattern is the foundation of this app to make sure the requirement can be flexible change with implementation switch, code testable and maintainable. For example, IncomeTaxRuleStrategy is binding with AustraliaIncomeTaxRuleStrategyImpl, which can be switched to NZIncomeTaxRuleStrategyImpl in the future if the requirement was extended.  
-* Layer design: service, model and client can be easily to migrate to different system, e.g. command-line app to web app.
+* Layer design: service, model and client can be easily to migrate to different system, e.g. command-line app to web app, or web API.  
 * Tax rule is configurable in the system properties file with following format. The configuration design is for maintaining and reusing purpose.  
 ```
 tax.year=01 July 2012  
@@ -65,8 +72,10 @@ assertEquals(new Money(currency), incomeTax);
 
 # Run
 ## CSV file input
-** Input file csv file must have header. Salary should be number, super percentage should be number% format, and pay periods format should be 01 March - 31 March. Fields validation was enabled.**  
-** CSV input file sample is called personSalaryInput.csv located under the root source folder.**  
+
+* Input file csv file must have header. Salary should be number, super percentage should be number% format, and pay periods format should be 01 March - 31 March. Fields validation was enabled.  
+* CSV input file sample is called personSalaryInput.csv located under the root source folder.    
+
 ```
 FirstName,LastName,AnnualSalary,SuperRate,PaymentMonth  
 David,Rudd,60050,9%,01 March - 31 March  
@@ -79,11 +88,19 @@ Michael,Smith,1500,10%,01 February - 28 February
 **If the input csv file is not appended upon the command line, the default file name called: personSalaryInput.csv and make sure personSalaryInput.csv is under the same location with the jar file.**     
 
 
-* Run from generation jar based on above steps
+* Run from generated jar based on above steps
 * Or simply use the existing jar file under the dist folder. Exiting runnable jar file called: incometaxcalc-prod-jar-with-dependencies.jar and run the following command line:  
 ```
 java -jar incometaxcalc-prod-jar-with-dependencies.jar <input file name.csv>
 ```
 
 ## CSV file ouput
-After successfully run the above command, the output file will be generated: incometax_output_datetime.csv. Please see the sample output CSV file in your project directory called: incometax_output_171216231250.csv  
+After successfully run the above command, the output file will be generated: incometax_output_datetime.csv. Please see the sample output CSV file in your project directory called: incometax_output_171216231250.csv 
+
+```
+Name,Pay Period,Gross Income,Income Tax,Net Income,Super  
+David Rudd,01 March 2013 - 31 March 2013,"$5,004.00",$922.00,"$4,082.00",$450.00  
+Ryan Chen,01 December 2012 - 31 December 2012,"$10,000.00","$2,696.00","$7,304.00","$1,000.00"  
+Roy Sun,01 April 2013 - 30 April 2013,"$10,417.00","$2,850.00","$7,567.00",$938.00  
+Michael Smith,01 February 2013 - 28 February 2013,$125.00,$0.00,$125.00,$13.00  
+``` 
