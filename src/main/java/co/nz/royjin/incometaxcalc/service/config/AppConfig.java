@@ -31,7 +31,7 @@ class AppConfig {
 	
 	public static AppConfig getInstance() {
 		return appConfig;
-	}
+	}	
 	
 	List<String> getTaxLevels() {
 		List<String> levels = new ArrayList<String>();

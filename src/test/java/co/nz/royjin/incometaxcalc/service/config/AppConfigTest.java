@@ -31,5 +31,4 @@ public class AppConfigTest {
 	public void loadCurrencyLocale() {
 		assertEquals(Currency.find("en_AU"), AppConfig.getInstance().getCurrency());
 	}
-
 }
